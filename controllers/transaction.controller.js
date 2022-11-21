@@ -25,7 +25,7 @@ const onTransaction = async (req, res) => {
         const transactions = new transaction(req.body);
         transactions.balance = await balanceChanges(req.body)
         await transactions.save();
-        io.io().emit('update-counter', { msg : "transaction success" })
+        _io.emit('update-counter', { msg : "transaction success" })
 
         return res.json({
             success: true,
